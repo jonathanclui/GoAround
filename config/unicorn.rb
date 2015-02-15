@@ -1,5 +1,5 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 15
+timeout 8
 preload_app true
 
 before_fork do |server, worker|
@@ -12,7 +12,7 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-    Signal.trap 'Term' do
+    Signal.trap 'TERM' do
         msg = 'Unicorn worker intercepting TERM and doing nothing. '
         msg += 'Wait for master to send QUIT'
         puts msg
