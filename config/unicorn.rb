@@ -12,7 +12,7 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-    Signa.trap 'Term' do
+    Signal.trap 'Term' do
         msg = 'Unicorn worker intercepting TERM and doing nothing. '
         msg += 'Wait for master to send QUIT'
         puts msg
