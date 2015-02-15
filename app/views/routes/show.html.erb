@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start long:</strong>
+  <%= @route.start_long %>
+</p>
+
+<p>
+  <strong>Start lat:</strong>
+  <%= @route.start_lat %>
+</p>
+
+<p>
+  <strong>End long:</strong>
+  <%= @route.end_long %>
+</p>
+
+<p>
+  <strong>End lat:</strong>
+  <%= @route.end_lat %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @route.distance %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @route.price %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>
