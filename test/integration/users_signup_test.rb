@@ -36,6 +36,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                                   zipcode: "02139" }
         end
         assert_template 'users/show'
+        assert is_logged_in?
         assert_not flash.empty?
     end
 
