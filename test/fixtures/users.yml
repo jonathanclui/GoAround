@@ -1,23 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  first_name: MyString 
-  last_name: MyString
-  email: test1@yahoo.com 
-  cell: MyString
-  address_line_one: MyText
-  address_line_two: MyText
-  city: MyString
-  state: MyString
-  zipcode: MyString 
-
-two:
-  first_name: MyString
-  last_name: MyString
-  email: test2@yahoo.com 
-  cell: MyString
-  address_line_one: MyText
-  address_line_two: MyText
-  city: MyString
-  state: MyString
-  zipcode: MyString
+jorge:
+  first_name: Jorge 
+  last_name: Example
+  email: jorge@example.com 
+  cell: 6172120582
+  address_line_one: 450 Memorial Drive
+  city: Cambridge
+  state: MA
+  zipcode: 02139
+  password_digest: <%= User.digest('password') %>
