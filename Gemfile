@@ -5,8 +5,13 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 # bcrypt encrypts passwords
 gem 'bcrypt',   '3.1.7'
-# use bootstrap-sass for styling components in the views
+# Use bootstrap-sass for styling components in the views
 gem 'bootstrap-sass', '3.2.0.0'
+# Use faker for creating pre-set users
+gem 'faker', '1.4.2'
+# Use gems for pagination
+gem 'will_paginate', '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -49,7 +54,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '1.3.2'
 end
 
 group :test do
