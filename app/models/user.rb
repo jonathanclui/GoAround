@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
     validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false } 
-    validates :password, length: { minimum: 6 }
-    validates :password_confirmation, length: { minimum: 6 }
+    validates :password, length: { minimum: 6 }, allow_blank: true
+    validates :password_confirmation, length: { minimum: 6 }, allow_blank: true
     validates :first_name, presence: true, length: { maximum: 50 }
     validates :last_name, presence: true, length: { maximum: 50 }
     validates :cell, presence: true, length: { maximum: 10 }
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
         SecureRandom.urlsafe_base64
     end
     
-    # Returns a user int he database for use in persistent sessions.
+    # Returns a user in the database for use in persistent sessions.
     def remember
         self.remember_token = User.new_token
         update_attribute(:remember_digest, User.digest(remember_token))

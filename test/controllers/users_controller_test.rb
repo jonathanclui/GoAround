@@ -3,12 +3,12 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:jorge)
+    @other_user = users(:archer)
   end
 
-  test "should get index" do
+  test "should redirect index when not logged in" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:users)
+    assert_redirected_to login_url
   end
 
   test "should get new" do
@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { address_line_one: @user.address_line_one, address_line_two: @user.address_line_two, cell: @user.cell, city: @user.city, email: "test3@yahoo.com", first_name: @user.first_name, last_name: @user.last_name, state: @user.state, zipcode: @user.zipcode, password: "foobar", password_confirmation: "foobar" }
+      post :create, user: { address_line_one: @user.address_line_one, cell: @user.cell, city: @user.city, email: "test3@yahoo.com", first_name: @user.first_name, last_name: @user.last_name, state: @user.state, zipcode: @user.zipcode, password: "foobar", password_confirmation: "foobar" }
     end
 
     assert_redirected_to user_path(assigns(:user))
@@ -29,21 +29,44 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should redirect edit when not logged in" do
     get :edit, id: @user
-    assert_response :success
+    assert_not flash.empty?
+    assert_redirected_to login_url
   end
 
-  test "should update user" do
-    patch :update, id: @user, user: { address_line_one: @user.address_line_one, address_line_two: @user.address_line_two, cell: @user.cell, city: @user.city, email: "testUpdate@yahoo.com", first_name: @user.first_name, last_name: @user.last_name, state: @user.state, zipcode: @user.zipcode, password: "foobar", password_confirmation: "foobar" }
-    assert_redirected_to user_path(assigns(:user))
+  test "should redirect update when not logged in" do
+    patch :update, id: @user, user: { address_line_one: @user.address_line_one, cell: @user.cell, city: @user.city, email: @user.email, first_name: @user.first_name, last_name: @user.last_name, state: @user.state, zipcode: @user.zipcode }
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end 
+
+  test "should redirect edit when logged in as wrong user" do
+    log_in_as(@other_user)
+    get :edit, id: @user
+    assert flash.empty?
+    assert_redirected_to root_url
   end
 
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
+  test "should redirect update when logged in as wrong user" do
+    log_in_as(@other_user)
+    patch :update, id: @user, user: { first_name: @user.first_name, last_name: @user.last_name, email: @user.email, cell: @user.cell, address_line_one: @user.address_line_one, state: @user.state, city: @user.city, zipcode: @user.zipcode }
+    assert flash.empty?
+    assert_redirected_to root_url 
+  end
+
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'User.count' do
       delete :destroy, id: @user
     end
+    assert_redirected_to login_url
+  end
 
-    assert_redirected_to users_path
+  test "should redirect destroy when logged in as a non-admin" do
+    log_in_as(@other_user)
+    assert_no_difference 'User.count' do
+      delete :destroy, id: @user
+    end
+    assert_redirected_to root_url
   end
 end

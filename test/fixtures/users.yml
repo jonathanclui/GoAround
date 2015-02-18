@@ -8,5 +8,30 @@ jorge:
   address_line_one: 450 Memorial Drive
   city: Cambridge
   state: MA
+  zipcode: 02140
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+archer:
+  first_name: Sterling
+  last_name: Archer
+  email: duchess@example.gov
+  address_line_one: 77 Las Vegas Strip Ave.
+  cell: 7021220782
+  city: Las Vegas
+  state: NV
+  zipcode: 89034
+  password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  first_name: <%= "User_First #{n}" %>
+  last_name: <%= "User_Last #{n}" %>
+  email: <%= "user-#{n}@goaround.com" %>
+  address_line_one: <%= "#{n} Massachusetts Avenue" %>
+  cell: 1234567890
+  city: Boston
+  state: MA
   zipcode: 02139
   password_digest: <%= User.digest('password') %>
+<% end %>
