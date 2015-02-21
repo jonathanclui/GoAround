@@ -11,6 +11,8 @@ jorge:
   zipcode: 02140
   password_digest: <%= User.digest('password') %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 archer:
   first_name: Sterling
@@ -22,6 +24,8 @@ archer:
   state: NV
   zipcode: 89034
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 user_<%= n %>:
@@ -34,4 +38,6 @@ user_<%= n %>:
   state: MA
   zipcode: 02139
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>
