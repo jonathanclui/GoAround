@@ -43,4 +43,15 @@ class TravelRoutesInterfaceTest < ActionDispatch::IntegrationTest
         get user_path(users(:archer))
         assert_select 'a', text: 'delete', count: 0
     end
+
+    test "travel routes sidebar count" do
+        log_in_as(@user)
+        get root_path
+        assert_match "#{@user.travel_routes.count} routes", response.body
+        # User with zero travel routes
+        other_user = users(:dan)
+        log_in_as(other_user)
+        get root_path
+        assert_match "0 routes", response.body
+    end
 end
