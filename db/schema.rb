@@ -11,22 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223144620) do
+ActiveRecord::Schema.define(version: 20150224052540) do
 
-  create_table "routes", force: :cascade do |t|
-    t.decimal  "start_long"
-    t.decimal  "start_lat"
-    t.decimal  "end_long"
-    t.decimal  "end_lat"
-    t.decimal  "distance"
-    t.decimal  "price"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "routes", ["user_id", "created_at"], name: "index_routes_on_user_id_and_created_at"
-  add_index "routes", ["user_id"], name: "index_routes_on_user_id"
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "travel_routes", force: :cascade do |t|
     t.decimal  "start_lat"

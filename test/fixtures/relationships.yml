@@ -1,0 +1,15 @@
+one:
+    follower: jorge
+    followed: lana
+
+two:
+    follower: jorge
+    followed: dan
+
+three:
+    follower: lana
+    followed: jorge
+
+four:
+    follower: archer
+    follower: jorge

@@ -27,6 +27,33 @@ archer:
   activated: true
   activated_at: <%= Time.zone.now %>
 
+dan:
+  first_name: Dan
+  last_name: Michaels
+  email: danmichaels@yahoo.com
+  address_line_one: 239 Hallow Drive
+  cell: 9102318274
+  city: Denver
+  state: CO
+  zipcode: 12030
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+lana:
+  first_name: Lana
+  last_name: Williams
+  email: lanawilliams@yahoo.com
+  address_line_one: 971 Halo Drive
+  cell: 9102318974
+  city: Phoenix
+  state: AZ
+  zipcode: 92030
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+
 <% 30.times do |n| %>
 user_<%= n %>:
   first_name: <%= "User_First #{n}" %>
