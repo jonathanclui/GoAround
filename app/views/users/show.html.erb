@@ -1,54 +1,20 @@
-<p id="notice"><%= notice %></p>
 <% provide(:title, @user.first_name) %>
-<h1>
-    <%= gravatar_for @user %>
-    <%= @user.first_name %>
-</h1>
-
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>E-mail:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Cell:</strong>
-  <%= @user.cell %>
-</p>
-
-<p>
-  <strong>Address line one:</strong>
-  <%= @user.address_line_one %>
-</p>
-
-<p>
-  <strong>Address line two:</strong>
-  <%= @user.address_line_two %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @user.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @user.state %>
-</p>
-
-<p>
-  <strong>Zipcode:</strong>
-  <%= @user.zipcode %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user_info">
+            <h1>
+                <%= gravatar_for @user %>
+                <%= @user.first_name %>
+            </h1>
+        </section>
+    </aside>
+    <div class="col-md-8">
+        <% if @user.travel_routes.any? %>
+            <h3>Routes (<%= @user.travel_routes.count %>)</h3>
+            <ol class="travel_routes">
+                <%= render @travel_routes %>
+            </ol>
+            <%= will_paginate @travel_routes %>
+        <% end %>
+    </div>
+</div>

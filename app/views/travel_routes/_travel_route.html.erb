@@ -1,0 +1,11 @@
+<li id="travel_route-<%= travel_route.id %>">
+    <%= link_to gravatar_for(travel_route.user, size: 50), travel_route.user %>
+    <span class="user"><%= link_to travel_route.user.first_name, travel_route.user %></span>
+    <span class="distance"><%= travel_route.distance %></span>
+    <span class="timestamp">
+        Created <%= time_ago_in_words(travel_route.created_at) %> ago.
+        <% if current_user?(travel_route.user) %>
+            <%= link_to "delete", travel_route, method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
+    </span>
+</li>
