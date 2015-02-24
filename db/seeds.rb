@@ -8,7 +8,7 @@
 
 User.create(first_name: "Jodie", last_name: "Thomas", email: "test@gmail.com",cell: "9172125678", address_line_one: "77 Massachusetts Avenue", address_line_two: "", city: "Cambridge", state: "MA", zipcode: "02139", password: "password", password_confirmation: "password", admin: true, activated: true, activated_at: Time.zone.now)
 
-99.times do |n|
+50.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     email = "example-#{n+1}@goaround.com"
@@ -31,6 +31,14 @@ User.create(first_name: "Jodie", last_name: "Thomas", email: "test@gmail.com",ce
                     activated: true,
                     activated_at: Time.zone.now)
 end
-                    
 
-Route.create(start_long: "-122.4194155", start_lat: "37.7749295", end_long: "-122.393757", end_lat: "37.795313", distance: "2.2", price: "5.47")
+users = User.order(:created_at).take(6)
+50.times do
+    start_long = Faker::Address.longitude
+    start_lat = Faker::Address.latitude
+    end_long = Faker::Address.longitude
+    end_lat = Faker::Address.latitude
+    distance = Faker::Commerce.price
+    price = Faker::Commerce.price
+    users.each { |user| user.travel_routes.create!(start_long: start_long, start_lat: start_lat, end_long: end_long, end_lat: end_lat, distance: distance, price: price, user_id: user.id) }
+end

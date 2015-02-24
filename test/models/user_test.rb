@@ -142,4 +142,13 @@ class UserTest < ActiveSupport::TestCase
     test "authenticated? should return false for a user with nil digest" do
         assert_not @user.authenticated?(:remember, '')
     end
+
+    # Routes Tests
+    test "associated routes should be destroyed" do
+        @user.save
+        @user.travel_routes.create!(start_long: -122.123, start_lat: 32.123, end_long: -122.235, end_lat: 32.923, distance: 8.92, price: 8.24)
+        assert_difference 'TravelRoute.count', -1 do
+            @user.destroy
+        end
+    end
 end

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @travel_routes = @user.travel_routes.paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
   end
 
@@ -80,17 +81,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation,:first_name, :last_name, :cell, :address_line_one, :address_line_two, :city, :state, :zipcode)
-    end
-
-    # Before filters
-
-    # Confirms a logged-in user.
-    def logged_in_user
-        unless logged_in?
-            store_location
-            flash[:danger] = "Please log in."
-            redirect_to login_url
-        end
     end
 
     # Confirms the correct user.
