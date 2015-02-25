@@ -6,14 +6,14 @@ gem 'rails', '4.2.0'
 # bcrypt encrypts passwords
 gem 'bcrypt',   '3.1.7'
 # Use bootstrap-sass for styling components in the views
-gem 'bootstrap-sass', '3.2.0.0'
+gem 'bootstrap-sass', '3.3.3'
 # Use faker for creating pre-set users
 gem 'faker', '1.4.2'
 # Use gems for pagination
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '>= 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
