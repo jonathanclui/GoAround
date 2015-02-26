@@ -1,7 +1,7 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
-        <%= link_to "GoAround", root_path, id: "logo" %>
-        <nav>
+<div class="navbar navbar-fixed-top navbar-goaround navbar-default">
+    <div class="navbar-inner">
+        <div class="container">
+            <%= link_to "GoAround", root_path, id: "logo" %>
             <ul class="nav navbar-nav navbar-right">
                 <li><%= link_to "Home", root_path %></li>
                 <li><%= link_to "Help", help_path %></li>
@@ -22,7 +22,7 @@
                     <li><%= link_to "Log in", login_path %></li>
                 <% end %>
             </ul>
-        </nav>
+        </div>
     </div>
-</header>
+</div>
 
