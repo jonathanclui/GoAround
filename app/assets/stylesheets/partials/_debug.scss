@@ -1,0 +1,15 @@
+// Bootstrap and Flatly Styles
+@import "bootswatch/flatly/variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootswatch/flatly/bootswatch";
+
+@import "modules/base";
+
+.debug_dump {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 45px;
+    @include box_sizing;
+}
