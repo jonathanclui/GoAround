@@ -1,20 +1,24 @@
-// Bootstrap and Flatly Styles
+// Bootstrap and Flatly Style Imports
 @import "bootswatch/flatly/variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootswatch/flatly/bootswatch";
 
-// Module
-@import "modules/base";
+// Base styling variables, mixins, colors
+@import "base/mixins.scss";
+@import "base/base-html.scss";
+@import "base/colors.scss";
 
-// Partials
-@import "partials/typography";
-@import "partials/header";
-@import "partials/footer";
-@import "partials/forms";
-@import "partials/travel_routes";
-@import "partials/sidebar";
-@import "partials/debug";
+// General Styling
+@import "styles/debug.scss";
+@import "styles/sidebar.scss";
+@import "styles/footer.scss";
+@import "styles/travel_routes.scss";
+@import "styles/forms.scss";
+@import "styles/typography.scss";
+@import "styles/header.scss";
+@import "styles/users.scss";
+@import "styles/session.scss";
 
-// Vendor
-
+// Bootstrap Modifications
+@import "vendor/bootstrap-custom.scss";
