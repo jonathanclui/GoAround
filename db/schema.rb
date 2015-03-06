@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224052540) do
+ActiveRecord::Schema.define(version: 20150306071420) do
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -43,12 +43,6 @@ ActiveRecord::Schema.define(version: 20150224052540) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "cell"
-    t.string   "address_line_one"
-    t.string   "address_line_two"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zipcode"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "password_digest"

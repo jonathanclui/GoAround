@@ -3,101 +3,13 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
     
     def setup
-        @user = User.new(first_name: "Example",
-                        last_name: "LastName",
-                        email: "user@example.com",
-                        cell: "123456789",
-                        address_line_one: "300 Oracle Parkway",
-                        city: "Redwood City",
-                        state: "CA",
-                        zipcode: "94065",
-                        password: "foobar", password_confirmation: "foobar")
+        @user = User.new(   email: "user@example.com",
+                            password: "foobar", password_confirmation: "foobar")
     end
 
     # Validation testing for presence of required user fields
     test "Should be valid" do
         assert @user.valid?
-    end
-
-    test "First name should be present" do
-        @user.first_name = "    "
-        assert_not @user.valid?
-    end
-
-    test "Last name should be present" do
-        @user.last_name = "     "
-        assert_not @user.valid?
-    end
-
-    test "Email should be present" do
-        @user.email = "     "
-        assert_not @user.valid?
-    end
-
-    test "Cell should be present" do
-        @user.cell = "      "
-        assert_not @user.valid?
-    end
-
-    test "Address line one should be present" do
-        @user.address_line_one = "      "
-        assert_not @user.valid?
-    end
-
-    test "City should be present" do 
-        @user.city = "      "
-        assert_not @user.valid?
-    end
-
-    test "State should be present" do
-        @user.state = "     "
-        assert_not @user.valid?
-    end
-
-    test "Zipcode should be present" do
-        @user.zipcode = "   "
-        assert_not @user.valid?
-    end
-
-    # Validation tests for length of user fields
-    test "First name should not be too long" do
-        @user.first_name = "a" * 51
-        assert_not @user.valid?
-    end
-
-    test "Last name should not be too long" do
-        @user.last_name = "a" * 51
-        assert_not @user.valid?
-    end
-
-    test "Email should not be too long" do
-        @user.email = "a" * 244 + "@example.com"
-        assert_not @user.valid?
-    end
-
-    test "Cell should not be longer than 10 numbers" do
-        @user.cell = "a"  * 11
-        assert_not @user.valid?
-    end
-
-    test "Address should not be too long" do
-        @user.address_line_one = "a" * 256
-        assert_not @user.valid?
-    end
-
-    test "City should not be too long" do
-        @user.city = "a" * 256
-        assert_not @user.valid?
-    end
-
-    test "State should not be too long" do
-        @user.state = "a" * 256
-        assert_not @user.valid?
-    end
-
-    test "Zipcode should not be too long" do
-        @user.zipcode = "1" * 11
-        assert_not @user.valid?
     end
 
     # E-mail Format Validation

@@ -13,12 +13,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                      last_name: "",
                                      email: "user@invalid",
                                      password: "foo",
-                                     password_confirmation: "bar",
-                                     cell: "",
-                                     address_line_one: "",
-                                     city: "",
-                                     state: "",
-                                     zipcode: "" }
+                                     password_confirmation: "bar" }
         end
         assert_template 'users/new'
         assert_select 'div#error_explanation'
@@ -32,12 +27,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                                   last_name: "User",
                                                   email: "user@example.com",
                                                   password: "password",
-                                                  password_confirmation: "password",
-                                                  cell: "6172125121",
-                                                  address_line_one: "77 Mass Ave.",
-                                                  city: "Cambridge",
-                                                  state: "MA",
-                                                  zipcode: "02139" }
+                                                  password_confirmation: "password" }
         end
         assert_equal 1, ActionMailer::Base.deliveries.size
         user = assigns(:user)

@@ -25,13 +25,6 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false } 
     validates :password, length: { minimum: 6 }, allow_blank: true
     validates :password_confirmation, length: { minimum: 6 }, allow_blank: true
-    validates :first_name, presence: true, length: { maximum: 50 }
-    validates :last_name, presence: true, length: { maximum: 50 }
-    validates :cell, presence: true, length: { maximum: 10 }
-    validates :address_line_one, presence: true, length: { maximum: 255 }
-    validates :city, presence: true, length: { maximum: 255 }
-    validates :state, presence: true, length: { maximum: 255 }
-    validates :zipcode, presence: true, length: { maximum: 10 }
 
     # Returns the hash digest of the given string.
     def User.digest(string)

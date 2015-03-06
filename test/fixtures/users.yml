@@ -4,11 +4,6 @@ jorge:
   first_name: Jorge 
   last_name: Example
   email: jorge@example.com 
-  cell: 6172120582
-  address_line_one: 450 Memorial Drive
-  city: Cambridge
-  state: MA
-  zipcode: 02140
   password_digest: <%= User.digest('password') %>
   admin: true
   activated: true
@@ -18,11 +13,6 @@ archer:
   first_name: Sterling
   last_name: Archer
   email: duchess@example.gov
-  address_line_one: 77 Las Vegas Strip Ave.
-  cell: 7021220782
-  city: Las Vegas
-  state: NV
-  zipcode: 89034
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
@@ -31,11 +21,6 @@ dan:
   first_name: Dan
   last_name: Michaels
   email: danmichaels@yahoo.com
-  address_line_one: 239 Hallow Drive
-  cell: 9102318274
-  city: Denver
-  state: CO
-  zipcode: 12030
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
@@ -44,11 +29,6 @@ lana:
   first_name: Lana
   last_name: Williams
   email: lanawilliams@yahoo.com
-  address_line_one: 971 Halo Drive
-  cell: 9102318974
-  city: Phoenix
-  state: AZ
-  zipcode: 92030
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
@@ -59,11 +39,6 @@ user_<%= n %>:
   first_name: <%= "User_First #{n}" %>
   last_name: <%= "User_Last #{n}" %>
   email: <%= "user-#{n}@goaround.com" %>
-  address_line_one: <%= "#{n} Massachusetts Avenue" %>
-  cell: 1234567890
-  city: Boston
-  state: MA
-  zipcode: 02139
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
