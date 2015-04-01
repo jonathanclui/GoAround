@@ -28,10 +28,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# omniauth for single sign on
-gem 'omniauth'
-gem 'omniauth-facebook'
-
 # Use bootstrap-sass for styling components in the views
 gem 'bootstrap-sass', '3.3.3'
 gem 'bootswatch-rails'
@@ -44,6 +40,8 @@ gem 'sass-rails', '>= 5.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'polylines'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

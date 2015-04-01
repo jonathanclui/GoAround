@@ -1,17 +1,131 @@
 <div class="row">
-    <aside class="col-md-4">
-        <section class="user_info">
-            <%= render 'shared/user_info' %>
-        </section>
-        <section class="stats">
-            <%= render 'shared/stats' %>
-        </section>
-        <section class="travel_route_form">
-            <%= render 'shared/travel_route_form' %>
-        </section>
-    </aside>
-    <div class="col-md-8">
-        <h3>Travel Routes Feed</h3>
-        <%= render 'shared/feed' %>
+    <div class="col-md-3 queryPane">
+        <form role="form">
+            <font size="4">Find Routes</font>
+            <div class="input-group">
+                <span class="input-group-addon" id="start-addon">Start</span>
+                <input type="text" class="form-control" id="start_input" placeholder="Search...">
+                <span id="search-button-inline" >
+                    <span class="glyphicon glyphicon-arrow-right" id="search-image" onclick="geocodeInput()" aria-hidden="false">
+                    </span>
+                </span>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="end-addon">End</span>
+                <input type="text" class="form-control" id="end_input" placeholder="Search...">
+            </div>
+        </form>
+        <div id="resultsContainer">
+            <h2>Results</h2>
+            <div class="resultModes">
+                <ul class="driveMode">
+                    <li>
+                        <div class="tripImage" id="driveImage">
+                            <!-- Insert image here --> 
+                            <span>Drive</span>
+                        </div>
+                        <div class="tripProperties">
+                            <span class="tripLength">
+                                <span class="number" id="drive">
+                                    12
+                                </span>
+                                <span class="timeLabel" id="drive">
+                                    min
+                                </span>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="publicTransitMode">
+                    <li>
+                        <div class="tripImage" id="publicTransitImage">
+                            <!-- Insert image here --> 
+                            <span>Public Transit</span>
+                        </div>
+                        <div class="tripProperties">
+                            <span class="tripLength">
+                                <span class="number" id="publicTransit">
+                                    33
+                                </span>
+                                <span class="timeLabel" id="publicTransit">
+                                    min
+                                </span>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="uberMode">
+                    <li>
+                        <div class="tripImage" id="uberImage">
+                            <!-- Insert image here --> 
+                            <span>Uber</span>
+                        </div>
+                        <div class="tripProperties">
+                            <span class="tripLength">
+                                <span class="number" id="uber">
+                                    12
+                                </span>
+                                <span class="timeLabel" id="uber">
+                                    min
+                                </span>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="bikeMode">
+                    <li>
+                        <div class="tripImage" id="bikeImage">
+                            <!-- Insert image here --> 
+                            <span>Bike</span>
+                        </div>
+                        <div class="tripProperties">
+                            <span class="tripLength">
+                                <span class="number" id="bike">
+                                    62
+                                </span>
+                                <span class="timeLabel" id="bike">
+                                    mins
+                                </span>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="walkMode">
+                    <li>
+                        <div class="tripImage" id="walkImage">
+                            <!-- Insert image here --> 
+                            <span>Walking</span>
+                        </div>
+                        <div class="tripProperties">
+                            <span class="tripLength">
+                                <span class="number" id="walk">
+                                    81
+                                </span>
+                                <span class="timeLabel" id="walk">
+                                    mins
+                                </span>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="map-container">
+            <div id="map-canvas">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 details">
+        <font size="4">Details</font>
+        <strong>Mode of Travel: </strong>
+        <select id="mode" onchange="calcRoute();">
+          <option value="DRIVING">Driving</option>
+          <option value="WALKING">Walking</option>
+          <option value="BICYCLING">Bicycling</option>
+          <option value="TRANSIT">Transit</option>
+        </select>
+        <div id="directionsPanel"></div>
     </div>
 </div>

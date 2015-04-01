@@ -1,0 +1,22 @@
+#map-container {
+	height: 600px;
+	overflow: hidden;
+}
+
+#map-canvas {
+	height: 100%;
+}
+
+#search-button-inline {
+	float: right;
+	right: 5px;
+	position: absolute;
+	display: inline-block;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+/* test colors for the map directions */
+.adp, .adp table {
+	color: white;
+}
