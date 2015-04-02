@@ -4,6 +4,9 @@ var directionsDisplay;
 var map;
 var geocoder;
 
+// Variable for mapRouteEntity to store route data
+var lastRoute;
+
 // Search Latitude and Longitudes
 var LAT = 0;
 var LONG = 1;
@@ -33,6 +36,9 @@ function initialize() {
 	// Link the map to the directions renderer
 	directionsDisplay.setMap(map);
 	directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+
+	// Initialize the mapRouteEntity
+	lastRoute = new mapRouteEntity("", "");
 }
 
 var findResultsFromClick = function() {
@@ -49,29 +55,78 @@ var findResults = function(mode) {
 	// Geocode user inputs
 	geocodeInput();
 
-	$.when(startGeolocDeferred, endGeolocDeferred).done(function() { 
+	$.when(startGeolocDeferred, endGeolocDeferred).done(function() {
 		findDirectionsFromGeolocation(mode);
 	});
 }
 
 var findDirectionsFromGeolocation = function(mode) {
-	var request = {
-  		origin: document.getElementById('start_input').value,
-  		destination: document.getElementById('end_input').value,
-  		//origin: new google.maps.LatLng(startLocation[LAT], startLocation[LONG]),
-	    //destination: new google.maps.LatLng(endLocation[LAT], endLocation[LONG]),
-	    // Note that Javascript allows us to access the constant
-	    // using square brackets and a string value as its
-	    // "property."
-      	travelMode: google.maps.TravelMode[mode]
-  	};
+	start = document.getElementById("start_input").value;
+	end = document.getElementById("end_input").value;
 
-  	directionsService.route(request, function(response, status) {
-    	if (status == google.maps.DirectionsStatus.OK) {
-      		directionsDisplay.setDirections(response);
-      		console.log(response.routes[0].legs[0].duration.value);
-    	}
-  	});
+	if ((start !== lastRoute.start) || (end !== lastRoute.end)) {
+		// Brand new search
+		lastRoute.start = start;
+		lastRoute.end = end;
+
+		var drivingRequest = {
+  			origin: start,
+  			destination: end,
+      		travelMode: google.maps.TravelMode["DRIVING"]
+	  	};
+	  	var transitRequest = {
+	  		origin: start,
+	  		destination: end,
+	      	travelMode: google.maps.TravelMode["TRANSIT"]
+	  	};
+	  	var bicyclingRequest = {
+	  		origin: start,
+	  		destination: end,
+	      	travelMode: google.maps.TravelMode["BICYCLING"]
+	  	};
+	  	var walkingRequest = {
+	  		origin: start,
+	  		destination: end,
+	      	travelMode: google.maps.TravelMode["WALKING"]
+	  	};
+
+	  	directionsService.route(drivingRequest, function(response, status) {
+	    	if (status == google.maps.DirectionsStatus.OK) {
+	    		directionsDisplay.setDirections(response);
+	    		lastRoute.setDriving(response);
+	      		$("#drivingDuration").html(getTripDuration(response));
+	    	}
+	  	});
+	  	directionsService.route(transitRequest, function(response, status) {
+	    	if (status == google.maps.DirectionsStatus.OK) {
+	    		lastRoute.setTransit(response);
+	      		$("#publicTransitDuration").html(getTripDuration(response));
+	    	}
+	  	});
+	  	directionsService.route(bicyclingRequest, function(response, status) {
+	    	if (status == google.maps.DirectionsStatus.OK) {
+	      		lastRoute.setBicycling(response);
+	      		$("#bikingDuration").html(getTripDuration(response));
+	    	}
+	  	});
+	  	directionsService.route(walkingRequest, function(response, status) {
+	    	if (status == google.maps.DirectionsStatus.OK) {
+	      		lastRoute.setWalking(response);
+	      		$("#walkingDuration").html(getTripDuration(response));
+	    	}
+	  	});
+	} else {
+		var response = lastRoute.getResponse(mode);
+		if (response != null) {
+			console.log("NOT EXECUTING NEW QUERY");
+			directionsDisplay.setDirections(response);
+		}
+	}
+}
+
+var getTripDuration = function(response) {
+	var durationInSecs = response.routes[0].legs[0].duration.value;
+	return Math.ceil(durationInSecs / 60.0);
 }
 
 var geocodeInput = function() {
