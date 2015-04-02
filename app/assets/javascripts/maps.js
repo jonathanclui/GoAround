@@ -12,8 +12,6 @@ var lastRoute;
 // Search Latitude and Longitudes
 var LAT = 0;
 var LONG = 1;
-var startLocation = [37.7699298, -122.4469157];
-var endLocation = [37.7683909618184, -122.51089453697205];
 
 // Deferred objects
 var startGeolocDeferred;
@@ -47,25 +45,6 @@ function initialize() {
 
 	// Initialize the mapRouteEntity
 	lastRoute = new mapRouteEntity("", "");
-}
-
-var findResultsFromClick = function() {
-	var mode = "DRIVING";
-	findResults(mode);
-	setActiveClass("#drivingResults");
-}
-
-var findResults = function(mode) {
-	// Initialize Deferred Objects
-	startGeolocDeferred = $.Deferred();
-	endGeolocDeferred = $.Deferred();
-
-	// Geocode user inputs
-	geocodeInput();
-
-	$.when(startGeolocDeferred, endGeolocDeferred).done(function() {
-		findDirectionsFromGeolocation(mode);
-	});
 }
 
 var findDirectionsFromGeolocation = function(mode) {
@@ -103,6 +82,9 @@ var findDirectionsFromGeolocation = function(mode) {
 	    		directionsDisplay.setDirections(response);
 	    		lastRoute.setDriving(response);
 	      		$("#drivingDuration").html(getTripDuration(response));
+
+	      		// On a new request we always default the display to be "Driving"
+	      		setActiveClass("#drivingResults");
 	    	}
 	  	});
 	  	directionsService.route(transitRequest, function(response, status) {

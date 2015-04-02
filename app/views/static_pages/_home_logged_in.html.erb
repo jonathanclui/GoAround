@@ -10,7 +10,7 @@
                 <span class="input-group-addon" id="end-addon">End</span>
                 <input type="text" class="form-control" id="end_input" placeholder="Search...">
                 <span id="search-button-inline" >
-                    <span class="glyphicon glyphicon-arrow-right" id="search-image" onclick="findResultsFromClick()" aria-hidden="false">
+                    <span class="glyphicon glyphicon-arrow-right" id="search-image" onclick="populateResultsFromUser()" aria-hidden="false">
                     </span>
                 </span>
             </div>
@@ -81,10 +81,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div id="map-container">
-            <div id="map-canvas">
-            </div>
+    <div class="col-md-6" id="map-container">
+        <div id="map-canvas">
         </div>
     </div>
     <div class="col-md-3 details">

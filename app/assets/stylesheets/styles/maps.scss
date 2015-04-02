@@ -24,6 +24,25 @@
 	}
 }
 
+#mapContainer {
+	#map-canvas {
+		.gm-style {
+			tbody {
+				background-color: #ffffff;
+			}
+			div {
+				background-color: #ffffff;
+			}
+			table {
+				background-color: #ffffff;
+			}
+			td {
+				background-color: #ffffff;
+			}
+		}
+	}
+}
+
 #search-button-inline {
 	float: right;
 	right: 5px;

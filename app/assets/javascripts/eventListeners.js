@@ -8,8 +8,7 @@ $(document).ready(function() {
 	// Add an event listener to submit query when enter key is pressed and focus is in either start or end box
 	window.addEventListener("keypress", function(e) {
 		if (e.which == 13 && (($(':focus').activeElement == $("#start_input").activeElement) || ($(':focus').activeElement == $("#end_input").activeElement))) {
-			findResults("DRIVING");
-			setActiveClass("#drivingResults");
+			populateResultsFromUser();
 		}
 	});
 
@@ -18,13 +17,13 @@ $(document).ready(function() {
 		setActiveClass(this);
 
 		var mode = "DRIVING";
-		findResults(mode);
+		populateResults(mode);
 	});
 	$("#publicTransitResults").mouseover(function() {
 		setActiveClass(this);
 
 		var mode = "TRANSIT";
-		findResults(mode);
+		populateResults(mode);
 	});
 	$("#uberResults").mouseover(function() {
 		setActiveClass(this);
@@ -33,13 +32,13 @@ $(document).ready(function() {
 		setActiveClass(this);
 
 		var mode = "BICYCLING";
-		findResults(mode);
+		populateResults(mode);
 	});
 	$("#walkingResults").mouseover(function() {
 		setActiveClass(this);
 
 		var mode = "WALKING";
-		findResults(mode);
+		populateResults(mode);
 	});
 });
 

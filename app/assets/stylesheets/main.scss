@@ -1,8 +1,8 @@
 // Bootstrap and Flatly Style Imports
-@import "bootswatch/slate/variables";
+@import "bootswatch/lumen/variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootswatch/slate/bootswatch";
+@import "bootswatch/lumen/bootswatch";
 
 // Base styling variables, mixins, colors
 @import "base/mixins.scss";
