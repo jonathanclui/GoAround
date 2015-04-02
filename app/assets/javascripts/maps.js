@@ -10,6 +10,10 @@ var LONG = 1;
 var startLocation = [37.7699298, -122.4469157];
 var endLocation = [37.7683909618184, -122.51089453697205];
 
+// Deferred objects
+var startGeolocDeferred;
+var endGeolocDeferred; 
+
 function initialize() {
 	// Initialize the directions renderer
 	directionsDisplay = new google.maps.DirectionsRenderer();
@@ -31,7 +35,45 @@ function initialize() {
 	directionsDisplay.setPanel(document.getElementById('directionsPanel'));
 }
 
-function geocodeInput() {
+var findResultsFromClick = function() {
+	var mode = "DRIVING";
+	findResults(mode);
+	setActiveClass("#drivingResults");
+}
+
+var findResults = function(mode) {
+	// Initialize Deferred Objects
+	startGeolocDeferred = $.Deferred();
+	endGeolocDeferred = $.Deferred();
+
+	// Geocode user inputs
+	geocodeInput();
+
+	$.when(startGeolocDeferred, endGeolocDeferred).done(function() { 
+		findDirectionsFromGeolocation(mode);
+	});
+}
+
+var findDirectionsFromGeolocation = function(mode) {
+	var request = {
+  		origin: document.getElementById('start_input').value,
+  		destination: document.getElementById('end_input').value,
+  		//origin: new google.maps.LatLng(startLocation[LAT], startLocation[LONG]),
+	    //destination: new google.maps.LatLng(endLocation[LAT], endLocation[LONG]),
+	    // Note that Javascript allows us to access the constant
+	    // using square brackets and a string value as its
+	    // "property."
+      	travelMode: google.maps.TravelMode[mode]
+  	};
+
+  	directionsService.route(request, function(response, status) {
+    	if (status == google.maps.DirectionsStatus.OK) {
+      	directionsDisplay.setDirections(response);
+    	}
+  	});
+}
+
+var geocodeInput = function() {
 	var start = document.getElementById('start_input').value;
 	var end = document.getElementById('end_input').value;
 	// Geocode the start to display
@@ -39,8 +81,9 @@ function geocodeInput() {
 		if (status == google.maps.GeocoderStatus.OK) {
 			startLocation = [getGeocodeLatitude(results), getGeocodeLongitude(results)];
 		} else {
-			alert('Geocode was not successful for the following reason: ' + status);
+			// Handle unsuccessful geocode
 		}
+		startGeolocDeferred.resolve();
 	});
 
 	// Geocode the end to display
@@ -48,36 +91,18 @@ function geocodeInput() {
 		if (status == google.maps.GeocoderStatus.OK) {
 			endLocation = [getGeocodeLatitude(results), getGeocodeLongitude(results)];
 		} else {
-			alert('Geocode was not successful for the following reason: ' + status);
+			// Handle unsuccessful geocode
 		}
+		endGeolocDeferred.resolve();
 	});
 }
 
-// The "B" parameter specifies the longitude in Google Maps Geocode API
-function getGeocodeLongitude(result) {
-	return result[0]["geometry"]["location"]["B"];
-}
-
-// The "k" parameter specifies the latitude in the Google Maps Geocode API
 function getGeocodeLatitude(result) {
-	return result[0]["geometry"]["location"]["k"];
+	return result[0].geometry.location.lat();
 }
 
-function calcRoute() {
-  var selectedMode = document.getElementById("mode").value;
-  var request = {
-      origin: new google.maps.LatLng(startLocation[LAT], startLocation[LONG]),
-      destination: new google.maps.LatLng(endLocation[LAT], endLocation[LONG]),
-      // Note that Javascript allows us to access the constant
-      // using square brackets and a string value as its
-      // "property."
-      travelMode: google.maps.TravelMode[selectedMode]
-  };
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
+function getGeocodeLongitude(result) {
+	return result[0].geometry.location.lng();
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

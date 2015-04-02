@@ -1,5 +1,28 @@
 /* QueryPane */
 
+.queryPane { 
+	height: 700px;
+	background-color: #38ab2e;
+	border-radius: 5px;
+	left: 7px;
+}
+
+#queryPaneLabel { 
+	color: #2c2c2c;
+	text-align: left;
+	padding-left: 0;
+	font-size: 25px;
+}
+
+li.active {
+	background-color: #407394 !important;
+	div {
+		span {
+			color: #ffffff;
+		}
+	}
+}
+
 #start_input {
 	padding-right: 45px;
 }
@@ -11,7 +34,7 @@
 	border-top: 1px solid rgba(255,255,255,.3);
 
 	h2 {
-		color: #C8C8C8;
+		color: #2c2c2c;
 		text-align: left;
 		padding-left: 0;
 		font-size: 25px;
@@ -20,16 +43,19 @@
 
 .resultModes {
 	vertical-align: baseline;
-	li {
-		padding: 12px;
-		border: 1px solid #e5e5e5;
-		background-color: white;
-		/* round corners of list item */
+	li:first-child {
 		border-top-right-radius: 5px;
 		border-top-left-radius: 5px;
-    	border-bottom-right-radius: 5px;  
-    	border-bottom-left-radius: 5px;
-
+	}
+	li:last-child {
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+	li {
+		padding: 20px;
+		border: 1px solid #e5e5e5;
+		background-color: #ffffff;
+		list-style: none;
 		span {
 			font-weight: bold;
 			color: #407394;
@@ -50,4 +76,19 @@
 	display: inline-block;
 }
 
-/* Results Pane */
+/* Details Pane */
+
+.details {
+	height: 100%;
+	right: 7px;
+	background-color: #deb32d;
+	border-radius: 5px;
+}
+
+#detailsLabel { 
+	color: #2c2c2c;
+	text-align: left;
+	padding-left: 0;
+	font-size: 25px;
+}
+

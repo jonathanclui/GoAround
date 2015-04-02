@@ -3,11 +3,8 @@
     <head>
         <title><%= full_title(yield(:title)) %></title>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBTqZUpnXQFnicvUUmkAntFTxfKH-8dDj0', 'data-turbolinks-track' => false %>
-        <%= javascript_include_tag 'maps', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'event-listeners', 'data-turbolinks-track' => true %>
-        <%= javascript_include_tag 'uber', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
         <%= render 'layouts/shim' %>
     </head>

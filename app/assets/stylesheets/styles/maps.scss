@@ -1,10 +1,26 @@
 #map-container {
-	height: 600px;
-	overflow: hidden;
+	height: 700px;
+	overflow: auto;
 }
 
 #map-canvas {
 	height: 100%;
+}
+
+#directionsPanel { 
+	height: 625px;
+	overflow: auto;
+	.adp {
+		table {
+			border: none;
+		}
+		div {
+			background-color: #deb32d;
+		}
+		td { 
+			background-color: #deb32d;
+		}
+	}
 }
 
 #search-button-inline {
@@ -14,9 +30,4 @@
 	display: inline-block;
 	background-color: transparent;
 	cursor: pointer;
-}
-
-/* test colors for the map directions */
-.adp, .adp table {
-	color: white;
 }
