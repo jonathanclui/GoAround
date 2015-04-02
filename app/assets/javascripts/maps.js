@@ -3,6 +3,8 @@ var directionsService = new google.maps.DirectionsService();
 var directionsDisplay;
 var map;
 var geocoder;
+var startSearchBox;
+var endSearchBox;
 
 // Variable for mapRouteEntity to store route data
 var lastRoute;
@@ -36,6 +38,12 @@ function initialize() {
 	// Link the map to the directions renderer
 	directionsDisplay.setMap(map);
 	directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+
+	// Initialize the search box for autocomplete
+	startSearchBox = new google.maps.places.SearchBox(document.getElementById("start_input"));
+	endSearchBox = new google.maps.places.SearchBox(document.getElementById("end_input"));
+	startSearchBox.bindTo('bounds', map);
+	endSearchBox.bindTo('bounds', map);
 
 	// Initialize the mapRouteEntity
 	lastRoute = new mapRouteEntity("", "");
@@ -118,7 +126,6 @@ var findDirectionsFromGeolocation = function(mode) {
 	} else {
 		var response = lastRoute.getResponse(mode);
 		if (response != null) {
-			console.log("NOT EXECUTING NEW QUERY");
 			directionsDisplay.setDirections(response);
 		}
 	}
@@ -137,7 +144,7 @@ var geocodeInput = function() {
 		if (status == google.maps.GeocoderStatus.OK) {
 			startLocation = [getGeocodeLatitude(results), getGeocodeLongitude(results)];
 		} else {
-			// Handle unsuccessful geocode
+			// Unsuccessful geocode
 		}
 		startGeolocDeferred.resolve();
 	});
@@ -147,7 +154,7 @@ var geocodeInput = function() {
 		if (status == google.maps.GeocoderStatus.OK) {
 			endLocation = [getGeocodeLatitude(results), getGeocodeLongitude(results)];
 		} else {
-			// Handle unsuccessful geocode
+			// Unsuccesful geocode
 		}
 		endGeolocDeferred.resolve();
 	});
