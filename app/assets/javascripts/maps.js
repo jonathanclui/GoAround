@@ -68,7 +68,8 @@ var findDirectionsFromGeolocation = function(mode) {
 
   	directionsService.route(request, function(response, status) {
     	if (status == google.maps.DirectionsStatus.OK) {
-      	directionsDisplay.setDirections(response);
+      		directionsDisplay.setDirections(response);
+      		console.log(response.routes[0].legs[0].duration.value);
     	}
   	});
 }

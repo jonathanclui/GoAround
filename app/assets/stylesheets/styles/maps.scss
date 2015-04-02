@@ -5,6 +5,7 @@
 
 #map-canvas {
 	height: 100%;
+	border-radius: 5px;
 }
 
 #directionsPanel { 
@@ -15,10 +16,10 @@
 			border: none;
 		}
 		div {
-			background-color: #deb32d;
+			background-color: $detailsPane-background;
 		}
 		td { 
-			background-color: #deb32d;
+			background-color: $detailsPane-background;
 		}
 	}
 }

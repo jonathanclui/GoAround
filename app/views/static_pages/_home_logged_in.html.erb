@@ -5,14 +5,14 @@
             <div class="input-group">
                 <span class="input-group-addon" id="start-addon">Start</span>
                 <input type="text" class="form-control" id="start_input" placeholder="Search...">
-                <span id="search-button-inline" >
-                    <span class="glyphicon glyphicon-arrow-right" id="search-image" onclick="findResultsFromClick()" aria-hidden="false">
-                    </span>
-                </span>
             </div>
             <div class="input-group">
                 <span class="input-group-addon" id="end-addon">End</span>
                 <input type="text" class="form-control" id="end_input" placeholder="Search...">
+                <span id="search-button-inline" >
+                    <span class="glyphicon glyphicon-arrow-right" id="search-image" onclick="findResultsFromClick()" aria-hidden="false">
+                    </span>
+                </span>
             </div>
         </form>
         <div id="resultsContainer">
@@ -25,12 +25,8 @@
                     </div>
                     <div class="tripProperties">
                         <span class="tripLength">
-                            <span class="number" id="drive">
-                                12
-                            </span>
-                            <span class="timeLabel" id="drive">
-                                min
-                            </span>
+                            <span class="duration" id="drivingDuration">12</span>
+                            <span class="durationUnit" id="drivingDurationUnit">min</span>
                         </span>
                     </div>
                 </li>
@@ -41,12 +37,8 @@
                     </div>
                     <div class="tripProperties">
                         <span class="tripLength">
-                            <span class="number" id="publicTransit">
-                                33
-                            </span>
-                            <span class="timeLabel" id="publicTransit">
-                                min
-                            </span>
+                            <span class="duration" id="publicTransitDuration">33</span>
+                            <span class="durationUnit" id="publicTransitDurationUnit">min</span>
                         </span>
                     </div>
                 </li>
@@ -57,12 +49,8 @@
                     </div>
                     <div class="tripProperties">
                         <span class="tripLength">
-                            <span class="number" id="uber">
-                                12
-                            </span>
-                            <span class="timeLabel" id="uber">
-                                min
-                            </span>
+                            <span class="duration" id="uberDuration">12</span>
+                            <span class="durationUnit" id="uberDurationUnit">min</span>
                         </span>
                     </div>
                 </li>
@@ -73,12 +61,8 @@
                     </div>
                     <div class="tripProperties">
                         <span class="tripLength">
-                            <span class="number" id="bike">
-                                62
-                            </span>
-                            <span class="timeLabel" id="bike">
-                                mins
-                            </span>
+                            <span class="duration" id="bikeDuration">62</span>
+                            <span class="durationUnit" id="bikeDurationUnit">mins</span>
                         </span>
                     </div>
                 </li>
@@ -89,12 +73,8 @@
                     </div>
                     <div class="tripProperties">
                         <span class="tripLength">
-                            <span class="number" id="walk">
-                                81
-                            </span>
-                            <span class="timeLabel" id="walk">
-                                mins
-                            </span>
+                            <span class="duration" id="walkingDuration">81</span>
+                            <span class="durationUnit" id="walkingDurationUnit">mins</span>
                         </span>
                     </div>
                 </li>

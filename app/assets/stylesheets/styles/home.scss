@@ -2,7 +2,7 @@
 
 .queryPane { 
 	height: 700px;
-	background-color: #38ab2e;
+	background-color: $queryPane-background;
 	border-radius: 5px;
 	left: 7px;
 }
@@ -14,8 +14,36 @@
 	font-size: 25px;
 }
 
+.tripProperties .tripLength .duration {
+	font-size: 20px;
+	font-weight: 700;
+	position: absolute;
+	top: -24px;
+	right: 0;
+}
+
+.tripProperties .tripLength .durationUnit {
+	font-size: 11px;
+	font-weight: 300;
+	position: absolute;
+	top: -2px;
+	right: 0;
+}
+
+.tripLength { 
+	position: relative;
+	display: inline-block;
+	width: 25px;
+}
+
+.tripProperties {
+	display: inline-block;
+	padding-right: 25px;
+	position: absolute;
+}
+
 li.active {
-	background-color: #407394 !important;
+	background-color: #8e44ad !important;
 	div {
 		span {
 			color: #ffffff;
@@ -23,7 +51,7 @@ li.active {
 	}
 }
 
-#start_input {
+#end_input {
 	padding-right: 45px;
 }
 
@@ -81,7 +109,7 @@ li.active {
 .details {
 	height: 100%;
 	right: 7px;
-	background-color: #deb32d;
+	background-color: $detailsPane-background;
 	border-radius: 5px;
 }
 
