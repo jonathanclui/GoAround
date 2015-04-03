@@ -43,6 +43,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'polylines'
 
+# Use uber to log-in to the app
+gem 'omniauth'
+gem 'omniauth-uber'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

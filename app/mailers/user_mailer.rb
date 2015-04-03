@@ -1,4 +1,5 @@
 class UserMailer < ApplicationMailer
+  default :from => 'noreply@goaround.com'
 
   def account_activation(user)
     @user = user

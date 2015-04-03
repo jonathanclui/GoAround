@@ -1,5 +1,4 @@
 // Uber API Keys for development
-var uberClientId = "Q3U62L8ey6cHXN4w_Zm9oUf31ZzM03Fd";
 var uberServerToken = "KcAW5MPZORiQ3dWyihu6NIwGQWg0D97ZO543oEiw";
 
 var uberRoute;
@@ -47,7 +46,7 @@ renderUberResults = function() {
 	content += "<div id='uberSloganHolder'><h2 id='uberSlogan'>" + prod[0].description + "</h2></div>";
 
 	// Draw the uber car 
-	content += "<div id='uberDetails'><img id='uberCarImage' src='http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-uberx.png' alt='Uber'></div>";
+	content += "<div id='uberDetails'><img id='uberCarImage' src='" + prod[0].image.replace("http", "https") + "' alt='Uber'></div>";
 
 	// Draw the capacity
 	content += "<div id='uberCapacityHolder'><h2 id='uberCapacity'>Capacity of " + prod[0].capacity + " people </h2></div>";
@@ -67,7 +66,7 @@ generateUberListItem = function(uberType, uberPriceLow, uberPriceHigh, uberTime)
 	var arrivalText;
 	var arrivalUnit = "";
 	if (uberTime == null) {
-		arrivalText = "Not Available";
+		arrivalText = "None Available";
 	} else {
 		arrivalText = "Arriving in " + uberTime;
 		arrivalUnit = "mins";
@@ -103,7 +102,7 @@ drawUberInfo = function(type) {
 			$('#uberSlogan').replaceWith(newSlogan);
 
 			// Draw the uber car 
-			var newCarImage = "<img id='uberCarImage' src='" + prod[i].image + "' alt='Uber'>";
+			var newCarImage = "<img id='uberCarImage' src='" + prod[i].image.replace("http", "https") + "' alt='Uber'>";
 			$('#uberCarImage').replaceWith(newCarImage);
 
 			// Draw the capacity
