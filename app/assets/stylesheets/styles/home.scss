@@ -36,12 +36,6 @@
 	width: 25px;
 }
 
-.tripProperties {
-	display: inline-block;
-	padding-right: 25px;
-	position: absolute;
-}
-
 li.active {
 	background-color: #8e44ad !important;
 	div {
@@ -98,6 +92,8 @@ li.active {
 	display: inline-block;
 	float: right;
 	right: 0;
+	padding-right: 25px;
+	position: absolute;
 }
 
 .tripImage {
@@ -120,3 +116,112 @@ li.active {
 	font-size: 25px;
 }
 
+#uberResultsInfo {
+	vertical-align: baseline;
+	li:first-child {
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
+	}
+	li:last-of-type {
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+	li:last-child {
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+	li {
+		padding: 14px;
+		border: 1px solid #e5e5e5;
+		background-color: #ffffff;
+		list-style: none;
+		span {
+			font-weight: bold;
+			color: #407394;
+		}
+	}
+}
+
+.uberProperties {
+	display: inline-block;
+	float: right;
+	right: 0;
+	padding-right: 25px;
+	position: absolute;
+}
+
+.uberProperties .uberLength .arrivalTime {
+	font-size: 16px;
+	font-weight: 700 !important;
+	position: absolute;
+	top: -19px;
+	right: 0;
+}
+
+.uberProperties .uberLength .arrivalUnit {
+	font-size: 11px;
+	font-weight: 300 !important;
+	position: absolute;
+	top: -2px;
+	right: 30px;
+}
+
+.uberLength { 
+	position: relative;
+	display: inline-block;
+	width: 150px;
+}
+
+#requestBtnHolder {
+	margin-top: 25px;
+}
+
+#requestBtn {
+	margin: 0 auto;
+    display: inline;
+    width: 45%;
+    margin-left: 3%;
+}
+
+#cancelBtn { 
+	margin: 0 auto;
+	display: inline;
+	width: 45%;
+	margin-left: 4%;
+}
+
+.uberPrice {
+	position: relative;
+	top: 0px;
+	font-size: 16px;
+}
+
+#uberDetails {
+	margin-top: 25px;
+	max-height: 125px;
+}
+
+#uberCarImage {
+	margin: 0 auto;
+    display: block;
+    width: 175px;
+}
+
+#uberSlogan {
+	color: #2c2c2c;
+  	font-size: 25px;
+}
+
+#uberCapacity {
+	color: #2c2c2c;
+  	font-size: 25px;
+}
+
+li.uberActive {
+	background-color: #8e44ad !important;
+	div {
+		span {
+			color: #ffffff !important;
+		}
+	}
+}

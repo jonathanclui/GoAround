@@ -9,14 +9,6 @@ var endSearchBox;
 // Variable for mapRouteEntity to store route data
 var lastRoute;
 
-// Search Latitude and Longitudes
-var LAT = 0;
-var LONG = 1;
-
-// Deferred objects
-var startGeolocDeferred;
-var endGeolocDeferred; 
-
 function initialize() {
 	// Initialize the directions renderer
 	directionsDisplay = new google.maps.DirectionsRenderer();
@@ -45,11 +37,17 @@ function initialize() {
 
 	// Initialize the mapRouteEntity
 	lastRoute = new mapRouteEntity("", "");
+
+	// Initialize uberRouteEntity
+	uberRoute = new uberRouteEntity(startLocation, endLocation);
 }
 
 var findDirectionsFromGeolocation = function(mode) {
 	start = document.getElementById("start_input").value;
 	end = document.getElementById("end_input").value;
+
+	// Reset the Directions Display Panel
+	directionsDisplay.setPanel(document.getElementById('directionsPanel'));
 
 	if ((start !== lastRoute.start) || (end !== lastRoute.end)) {
 		// Brand new search
@@ -81,7 +79,9 @@ var findDirectionsFromGeolocation = function(mode) {
 	    	if (status == google.maps.DirectionsStatus.OK) {
 	    		directionsDisplay.setDirections(response);
 	    		lastRoute.setDriving(response);
-	      		$("#drivingDuration").html(getTripDuration(response));
+	    		tripDuration = getTripDuration(response);
+	      		$("#drivingDuration").html(tripDuration);
+	      		$("#uberDuration").html(tripDuration);
 
 	      		// On a new request we always default the display to be "Driving"
 	      		setActiveClass("#drivingResults");
@@ -125,6 +125,7 @@ var geocodeInput = function() {
 	geocoder.geocode( { 'address': start }, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			startLocation = [getGeocodeLatitude(results), getGeocodeLongitude(results)];
+			uberRoute.setStart(startLocation);
 		} else {
 			// Unsuccessful geocode
 		}
@@ -135,6 +136,7 @@ var geocodeInput = function() {
 	geocoder.geocode( { 'address': end }, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			endLocation = [getGeocodeLatitude(results), getGeocodeLongitude(results)];
+			uberRoute.setEnd(endLocation);
 		} else {
 			// Unsuccesful geocode
 		}
