@@ -1,5 +1,7 @@
 // Uber API Keys for development
-var uberServerToken = "KcAW5MPZORiQ3dWyihu6NIwGQWg0D97ZO543oEiw";
+var uberServerToken = "<%= ENV['UBER_SERVER_TOKEN'] %>";
+
+//var uberServerToken = "KcAW5MPZORiQ3dWyihu6NIwGQWg0D97ZO543oEiw";
 
 var uberRoute;
 
@@ -16,10 +18,9 @@ renderUberResults = function() {
 	var prod = uberRoute.getProductsEndpoint().products;
 	var price = uberRoute.getPriceEndpoint().prices;
 	var time = uberRoute.getTimeEndpoint().times;
+
 	// Loop through product types and generate html
 	for (i = 0; i < prod.length; i++) {
-		//console.log(prod[i].image);
-
 		var displayName = prod[i].display_name;
 		var lowEstimate;
 		var highEstimate;
