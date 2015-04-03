@@ -100,6 +100,13 @@ li.active {
 	display: inline-block;
 }
 
+#publicTransitFare {
+	position: relative;
+  	font-size: 20px;
+  	top: -3px;
+  	right: 20px;
+}
+
 /* Details Pane */
 
 .details {

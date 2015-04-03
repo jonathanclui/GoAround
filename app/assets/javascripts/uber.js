@@ -1,10 +1,10 @@
 // Uber API Keys for development
-//var uberClientId = "Q3U62L8ey6cHXN4w_Zm9oUf31ZzM03Fd";
-//var uberServerToken = "KcAW5MPZORiQ3dWyihu6NIwGQWg0D97ZO543oEiw";
+var uberClientId = "Q3U62L8ey6cHXN4w_Zm9oUf31ZzM03Fd";
+var uberServerToken = "KcAW5MPZORiQ3dWyihu6NIwGQWg0D97ZO543oEiw";
 
 // Uber API Keys for production
-var uberClientId = "M94ZL_7bDi9ZfOcGFUAl-CvVQX6dxJw-";
-var uberServerToken = "p3dXne52J09YPFU5KRuO6X5EDZN2Oo5y3vJYj1Vp";
+//var uberClientId = "M94ZL_7bDi9ZfOcGFUAl-CvVQX6dxJw-";
+//var uberServerToken = "p3dXne52J09YPFU5KRuO6X5EDZN2Oo5y3vJYj1Vp";
 
 var uberRoute;
 

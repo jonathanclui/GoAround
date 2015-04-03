@@ -91,6 +91,12 @@ var findDirectionsFromGeolocation = function(mode) {
 	    	if (status == google.maps.DirectionsStatus.OK) {
 	    		lastRoute.setTransit(response);
 	      		$("#publicTransitDuration").html(getTripDuration(response));
+	      		var fare = getTripFare(response);
+	      		if (fare != null) {
+	      			$("#publicTransitFare").html("$" + parseFloat(fare).toFixed(2));
+	      		} else {
+	      			$("#publicTransitFare").empty();
+	      		}
 	    	}
 	  	});
 	  	directionsService.route(bicyclingRequest, function(response, status) {
@@ -116,6 +122,16 @@ var findDirectionsFromGeolocation = function(mode) {
 var getTripDuration = function(response) {
 	var durationInSecs = response.routes[0].legs[0].duration.value;
 	return Math.ceil(durationInSecs / 60.0);
+}
+
+var getTripFare = function(response) {
+	var tripFare = null;
+	try {
+		tripFare = response.routes[0].fare.value;
+	} catch (err) {
+	}
+	console.log(tripFare);
+	return tripFare;
 }
 
 var geocodeInput = function() {
