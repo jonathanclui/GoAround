@@ -19,7 +19,6 @@
 
 # Ignore config secrets
 config/secrets.yml
-config/environment.rb
 
 .rvmrc
 
