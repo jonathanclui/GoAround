@@ -18,9 +18,9 @@
 /tmp
 
 # Ignore config secrets
-config/initializers/secret_token.rb
-config/secrets.yml
-config/environment.rb
+/config/initializers/secret_token.rb
+/config/secrets.yml
+/config/environment.rb
 
 .rvmrc
 
