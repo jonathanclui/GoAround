@@ -18,6 +18,7 @@
 /tmp
 
 # Ignore config secrets
+config/application.yml
 
 .rvmrc
 
