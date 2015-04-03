@@ -1,6 +1,11 @@
-// Uber API Keys
+// Uber API Keys for development
 var uberClientId = "Q3U62L8ey6cHXN4w_Zm9oUf31ZzM03Fd";
 var uberServerToken = "KcAW5MPZORiQ3dWyihu6NIwGQWg0D97ZO543oEiw";
+
+// Uber API Keys for production
+//var uberClientId = "M94ZL_7bDi9ZfOcGFUAl-CvVQX6dxJw-";
+//var uberServerToken = "p3dXne52J09YPFU5KRuO6X5EDZN2Oo5y3vJYj1Vp";
+
 var uberRoute;
 
 // Processing Uber API Calls
@@ -53,7 +58,7 @@ renderUberResults = function() {
 
 	// Draw the button in a div
 	content += "<div id='requestBtnHolder'><button type='button' class='btn btn-primary' id='requestBtn' disabled>" +
-		"Request</button><button type='button' class='btn btn-default' id='cancelBtn' disabled>Cancel</button></div>";
+		"Request " + prod[0].display_name + "</button><button type='button' class='btn btn-default' id='cancelBtn' disabled>Cancel</button></div>";
 	
 	$("#uberResultsInfo").html(content);
 
@@ -108,6 +113,8 @@ drawUberInfo = function(type) {
 			// Draw the capacity
 			var newUberCapacity = "<h2 id='uberCapacity'>Capacity of " + prod[i].capacity + " people </h2>";
 			$('#uberCapacity').replaceWith(newUberCapacity);
+
+			$("#requestBtn").html("Request " + prod[i].display_name);
 		}
 	}
 }
