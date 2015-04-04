@@ -16,7 +16,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should show user" do
+  test "should not show user when not logged in" do
+    get :show, id: @user
+    assert_redirected_to login_url
+  end
+
+  test "should show user when logged in" do
+    log_in_as(@user)
     get :show, id: @user
     assert_response :success
   end

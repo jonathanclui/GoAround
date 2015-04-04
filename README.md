@@ -1,5 +1,5 @@
 # GoAround
-GoAround is web application that allows you to compare your transportation options and request Uber's from desktop.
+GoAround is web application that allows you to compare your transportation options and request Ubers from desktop.
 
 ##Configuration
 You need your own Uber Developer API CLIENT_ID key and CLIENT_SECRET key in order to run. Run the command below and edit the application.yml file to contain your keys.

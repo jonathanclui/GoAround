@@ -130,7 +130,6 @@ var getTripFare = function(response) {
 		tripFare = response.routes[0].fare.value;
 	} catch (err) {
 	}
-	console.log(tripFare);
 	return tripFare;
 }
 

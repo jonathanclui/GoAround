@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @users = User.all.paginate(page: params[:page])
   end
 
   # GET /users/1
@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @travel_routes = @user.travel_routes.paginate(page: params[:page])
-    redirect_to root_url and return unless @user.activated?
   end
 
   # GET /users/new
@@ -34,8 +33,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        @user.send_activation_email
-        flash[:info] = "Please check your email to activate your account."
+        log_in @user
+        flash[:info] = "Account successfully created!"
         format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @user }
       else
@@ -94,7 +93,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name)
+      params.require(:user).permit(:email, :first_name, :last_name)
     end
 
     # Confirms the correct user.

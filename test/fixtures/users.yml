@@ -4,34 +4,22 @@ jorge:
   first_name: Jorge 
   last_name: Example
   email: jorge@example.com 
-  password_digest: <%= User.digest('password') %>
   admin: true
-  activated: true
-  activated_at: <%= Time.zone.now %>
 
 archer:
   first_name: Sterling
   last_name: Archer
   email: duchess@example.gov
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
 
 dan:
   first_name: Dan
   last_name: Michaels
   email: danmichaels@yahoo.com
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
 
 lana:
   first_name: Lana
   last_name: Williams
   email: lanawilliams@yahoo.com
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
 
 
 <% 30.times do |n| %>
@@ -39,7 +27,4 @@ user_<%= n %>:
   first_name: <%= "User_First #{n}" %>
   last_name: <%= "User_Last #{n}" %>
   email: <%= "user-#{n}@goaround.com" %>
-  password_digest: <%= User.digest('password') %>
-  activated: true
-  activated_at: <%= Time.zone.now %>
 <% end %>

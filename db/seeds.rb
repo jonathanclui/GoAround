@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(first_name: "Jodie", last_name: "Thomas", email: "test@gmail.com", password: "password", password_confirmation: "password", admin: true, activated: true, activated_at: Time.zone.now)
+User.create(first_name: "Jonathan", last_name: "Liu", email: "test@gmail.com", password: "password", password_confirmation: "password", admin: true)
 
 # User creation
 50.times do |n|
@@ -18,9 +18,7 @@ User.create(first_name: "Jodie", last_name: "Thomas", email: "test@gmail.com", p
                     last_name: last_name,
                     email: email,
                     password: password,
-                    password_confirmation: password,
-                    activated: true,
-                    activated_at: Time.zone.now)
+                    password_confirmation: password)
 end
 
 # Travel Routes
