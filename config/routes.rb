@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   get 'jobs'        =>  'static_pages#jobs'
   get 'signup'      =>  'users#new'
   get 'login'       =>  'sessions#new'
-  post 'login'      =>  'sessions#create'
   delete 'logout'   =>  'sessions#destroy'
-  resources :users do
+
+  get 'auth/:provider/callback',  to: 'sessions#create'
+
+  resources :users, except: [:edit, :update] do
     member do
         get :following, :followers
     end

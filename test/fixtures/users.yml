@@ -4,22 +4,38 @@ jorge:
   first_name: Jorge 
   last_name: Example
   email: jorge@example.com 
+  provider: facebook
+  uid: 1234567
+  oauth_token: 12345
+  oauth_expires_at: Time.now + 60.days 
   admin: true
 
 archer:
   first_name: Sterling
   last_name: Archer
   email: duchess@example.gov
+  provider: facebook
+  uid: 12345678
+  oauth_token: 123456
+  oauth_expires_at: Time.now + 60.days 
 
 dan:
   first_name: Dan
   last_name: Michaels
   email: danmichaels@yahoo.com
+  provider: facebook
+  uid: 123456789
+  oauth_token: 123457
+  oauth_expires_at: Time.now + 60.days 
 
 lana:
   first_name: Lana
   last_name: Williams
   email: lanawilliams@yahoo.com
+  provider: facebook
+  uid: 1234213567
+  oauth_token: 123443155
+  oauth_expires_at: Time.now + 60.days 
 
 
 <% 30.times do |n| %>
@@ -27,4 +43,8 @@ user_<%= n %>:
   first_name: <%= "User_First #{n}" %>
   last_name: <%= "User_Last #{n}" %>
   email: <%= "user-#{n}@goaround.com" %>
+  provider: "facebook"
+  uid: <%= Faker::Number.number(15) %>
+  oauth_token: <%= Faker::Number.number(25) %>
+  oauth_expires_at: <%= Time.now + 60.days %>
 <% end %>

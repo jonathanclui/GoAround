@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy, :following, :followers]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :show, :destroy, :following, :followers]
   before_action :admin_user, only: :destroy
 
   # GET /users
@@ -93,7 +92,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name)
+      params.require(:user).permit(:email, :first_name, :last_name, :provider, :uid, :oauth_token, :oauth_expires_at)
     end
 
     # Confirms the correct user.
