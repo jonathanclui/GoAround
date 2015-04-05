@@ -1,24 +1,8 @@
 <% provide(:title, @user.first_name) %>
 <div class="row">
-    <aside class="col-md-4">
-        <section class="user_info">
-            <h1>
-                <%= gravatar_for @user %>
-                <%= @user.first_name %>
-            </h1>
-        </section>
-        <section class="stats">
-            <%= render 'shared/stats' %>
-        </section>
-    </aside>
-    <div class="col-md-8">
-        <%= render 'follow_form' if logged_in? %>
-        <% if @user.travel_routes.any? %>
-            <h3>Routes (<%= @user.travel_routes.count %>)</h3>
-            <ol class="travel_routes">
-                <%= render @travel_routes %>
-            </ol>
-            <%= will_paginate @travel_routes %>
-        <% end %>
+    <div class="col-md-4">
+        <h1>
+            Hi <%= @user.first_name %> <%= @user.last_name %>
+        </h1>
     </div>
 </div>
