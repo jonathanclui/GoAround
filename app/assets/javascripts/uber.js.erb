@@ -39,6 +39,7 @@ renderUberResults = function() {
 			}
 		}
 		content += generateUberListItem(displayName, lowEstimate, highEstimate, estimatedTime);
+		generateUberPanelListener(displayName);
 	}
 
 	// Draw the slogan for the car type
@@ -60,6 +61,17 @@ renderUberResults = function() {
 	$("#"+prod[0].display_name).addClass("uberActive");
 }
 
+generateUberPanelListener = function(uberType) {
+	var itemId = "#" + uberType;
+	// HTML exists
+	if ($(itemId + ":not(:empty)")) {
+		$(document).on("mouseover", itemId, function() {
+			setActiveUberClass(this);
+			drawUberInfo(uberType);
+		});
+	}
+}
+
 generateUberListItem = function(uberType, uberPriceLow, uberPriceHigh, uberTime) { 
 	var priceText;
 	var arrivalText;
@@ -71,7 +83,7 @@ generateUberListItem = function(uberType, uberPriceLow, uberPriceHigh, uberTime)
 		arrivalUnit = "mins";
 	}
 
-	if (uberType == "uberTAXI") {
+	if (uberType == "uberTAXI" || uberType == "uberT") {
 		priceText = "Metered";
 	} else {
 		priceText = "$" + uberPriceLow + "-" + "$" + uberPriceHigh;
