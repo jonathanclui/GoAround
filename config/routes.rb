@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete 'logout'   =>  'sessions#destroy'
 
   get 'auth/:provider/callback',  to: 'sessions#create'
+  get 'auth/failure',             to: 'sessions#failure'
 
   resources :users, except: [:edit, :update] do
     member do

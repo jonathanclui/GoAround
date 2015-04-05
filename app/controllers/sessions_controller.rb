@@ -28,6 +28,11 @@ class SessionsController < ApplicationController
   #   end
   # end
 
+  def failure
+    flash[:info] = "Failed to Sign In with Uber"
+    redirect_to root_url
+  end
+
   def destroy
     log_out if logged_in?
     flash[:info] = "Successfully Logged Out" unless logged_in?
