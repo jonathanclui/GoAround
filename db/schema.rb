@@ -11,33 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405060834) do
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
-
-  create_table "travel_routes", force: :cascade do |t|
-    t.decimal  "start_lat"
-    t.decimal  "end_lat"
-    t.decimal  "start_long"
-    t.decimal  "end_long"
-    t.decimal  "distance"
-    t.decimal  "price"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "travel_routes", ["user_id", "created_at"], name: "index_travel_routes_on_user_id_and_created_at"
-  add_index "travel_routes", ["user_id"], name: "index_travel_routes_on_user_id"
+ActiveRecord::Schema.define(version: 20150405065535) do
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

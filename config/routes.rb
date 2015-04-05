@@ -12,14 +12,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback',  to: 'sessions#create'
   get 'auth/failure',             to: 'sessions#failure'
 
-  resources :users, except: [:edit, :update] do
-    member do
-        get :following, :followers
-    end
-  end
-  resources :travel_routes, only: [:create, :destroy]
-  resources :relationships, only: [:create, :destroy]
-
+  resources :users, except: [:edit, :update]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

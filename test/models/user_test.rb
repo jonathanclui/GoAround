@@ -56,42 +56,4 @@ class UserTest < ActiveSupport::TestCase
         assert_not @user.authenticated?(:remember, '')
     end
 
-    # Routes Tests
-    test "associated routes should be destroyed" do
-        @user.save
-        @user.travel_routes.create!(start_long: -122.123, start_lat: 32.123, end_long: -122.235, end_lat: 32.923, distance: 8.92, price: 8.24)
-        assert_difference 'TravelRoute.count', -1 do
-            @user.destroy
-        end
-    end
-
-    # Relationship tests
-    test "should follow and unfollow a user" do
-        jorge = users(:jorge)
-        archer = users(:archer)
-        assert_not jorge.following?(archer)
-        jorge.follow(archer)
-        assert jorge.following?(archer)
-        assert archer.followers.include?(jorge)
-        jorge.unfollow(archer)
-        assert_not jorge.following?(archer)
-    end
-
-    test "feed should have the right posts" do
-        jorge = users(:jorge)
-        archer = users(:archer)
-        lana = users(:lana)
-        # Travel routes from followed user
-        lana.travel_routes.each do |route_following|
-            assert jorge.feed.include?(route_following)
-        end
-        # Travel routes from self
-        jorge.travel_routes.each do |route_self|
-            assert jorge.feed.include?(route_self)
-        end
-        # Travel routes from unfollowed user
-        archer.travel_routes.each do |route_unfollowed|
-            assert_not jorge.feed.include?(route_unfollowed)
-        end
-    end
 end
