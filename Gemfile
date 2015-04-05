@@ -45,7 +45,6 @@ gem 'polylines'
 
 # Use uber to log-in to the app
 gem 'omniauth'
-gem 'omniauth-facebook'
 gem 'omniauth-uber'
 
 # Use Capistrano for deployment

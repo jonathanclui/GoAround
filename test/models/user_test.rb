@@ -3,9 +3,15 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
     
     def setup
-        @user = User.new(   first_name: "Jorge",
+        @user = User.new(   provider: "uber",
+                            uid: "109230194809853JKDJFLKAJF",
+                            email: "user@example.com",
+                            first_name: "Jorge",
                             last_name: "Colmo",
-                            email: "user@example.com")
+                            picture: "https://testpicture.com",
+                            promo_code: "A123DFA",
+                            oauth_token: "120390dfajslfnandasljfklsajk",
+                            refresh_token: "DKJFLAKDFJ-dasjfkljdlkfj-asfdkl")
     end
 
     # Validation testing for presence of required user fields

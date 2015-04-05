@@ -4,38 +4,46 @@ jorge:
   first_name: Jorge 
   last_name: Example
   email: jorge@example.com 
-  provider: facebook
+  provider: uber 
   uid: 1234567
-  oauth_token: 12345
-  oauth_expires_at: Time.now + 60.days 
+  picture: "https://image.us"
+  promo_code: "1290adf"
+  oauth_token: '12301923045'
+  refresh_token: '092103jkdaf0'
   admin: true
 
 archer:
   first_name: Sterling
   last_name: Archer
   email: duchess@example.gov
-  provider: facebook
+  provider: uber 
   uid: 12345678
-  oauth_token: 123456
-  oauth_expires_at: Time.now + 60.days 
+  picture: "https://image.us"
+  promo_code: "1290aljdf"
+  oauth_token: '123420DJKF05'
+  refresh_token: '092111111103jkdaf0'
 
 dan:
   first_name: Dan
   last_name: Michaels
   email: danmichaels@yahoo.com
-  provider: facebook
+  provider: uber 
   uid: 123456789
-  oauth_token: 123457
-  oauth_expires_at: Time.now + 60.days 
+  picture: "https://image.us"
+  promo_code: "12JLAF0J90addaff"
+  oauth_token: '12345'
+  refresh_token: '092103jkd0kd1222af0'
 
 lana:
   first_name: Lana
   last_name: Williams
   email: lanawilliams@yahoo.com
-  provider: facebook
+  provider: uber 
   uid: 1234213567
-  oauth_token: 123443155
-  oauth_expires_at: Time.now + 60.days 
+  picture: "https://image.us"
+  promo_code: "12900J111112dadf"
+  oauth_token: '12341092039ABC5'
+  refresh_token: '0921039999999DLjkdaf0'
 
 
 <% 30.times do |n| %>
@@ -43,8 +51,10 @@ user_<%= n %>:
   first_name: <%= "User_First #{n}" %>
   last_name: <%= "User_Last #{n}" %>
   email: <%= "user-#{n}@goaround.com" %>
-  provider: "facebook"
+  provider: "uber"
   uid: <%= Faker::Number.number(15) %>
-  oauth_token: <%= Faker::Number.number(25) %>
-  oauth_expires_at: <%= Time.now + 60.days %>
+  picture: "https://image.us"
+  promo_code: <%= Faker::Number.number(10) %>
+  oauth_token: <%= Faker::Number.number(15) %>
+  refresh_token: <%= Faker::Number.number(15) %>
 <% end %>
