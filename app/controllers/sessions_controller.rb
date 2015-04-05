@@ -7,26 +7,13 @@ class SessionsController < ApplicationController
       @user = User.from_omniauth(env['omniauth.auth'])
       if @user
           log_in @user
-          # params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+          remember @user
           redirect_to root_url
       else
           flash.now[:danger] = 'Invalid credentials from provider'
           render 'new'
       end
   end
-
-  # def create
-  #   @user = User.find_by(email: params[:session][:email].downcase)
-  #   #if @user && @user.authenticate(params[:session][:password])
-  #   if @user
-  #         log_in @user
-  #         params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-  #         redirect_to root_url
-  #   else
-  #       flash.now[:danger] = 'Invalid credentials from provider'
-  #       render 'new'
-  #   end
-  # end
 
   def failure
     flash[:info] = "Failed to Sign In with Uber"
