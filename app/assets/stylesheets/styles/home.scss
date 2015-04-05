@@ -1,4 +1,7 @@
 /* QueryPane */
+.queryLabels {
+	color: $label-color !important;
+}
 
 .queryPane { 
 	height: 700px;
@@ -8,7 +11,6 @@
 }
 
 #queryPaneLabel { 
-	color: #2c2c2c;
 	text-align: left;
 	padding-left: 0;
 	font-size: 25px;
@@ -117,7 +119,6 @@ li.active {
 }
 
 #detailsLabel { 
-	color: #2c2c2c;
 	text-align: left;
 	padding-left: 0;
 	font-size: 25px;
@@ -232,4 +233,8 @@ li.uberActive {
 			color: #ffffff !important;
 		}
 	}
+}
+
+.detailsPaneLabel {
+	color: $detailsPane-color;
 }
