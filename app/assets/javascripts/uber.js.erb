@@ -53,7 +53,10 @@ renderUberResults = function() {
 
 	// Draw the button in a div
 	content += "<div id='requestBtnHolder'><button type='button' class='btn btn-primary' id='requestBtn' disabled>" +
-		"Request " + prod[0].display_name + "</button><button type='button' class='btn btn-default' id='cancelBtn' disabled>Cancel</button></div>";
+		"Request " + prod[0].display_name + "</button>";
+
+	// Notify users that request is a future feature
+	content += "<div id='requestNotice'><h6 id='requestNoticeLabel'>NOTE: Requesting Uber is currently unavailable and will be available in a future update</h6></div>";
 	
 	$("#uberResultsInfo").html(content);
 
