@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :destroy, :following, :followers]
+  before_action :logged_in_user, only: [:index, :show, :destroy]
   before_action :admin_user, only: :destroy
+  before_action :correct_user,   only: [:show]
 
   # GET /users
   # GET /users.json
@@ -82,8 +83,8 @@ class UsersController < ApplicationController
 
     # Confirms the correct user.
     def correct_user
-        @user = User.find(params[:id])
-        redirect_to(root_url) unless current_user?(@user) 
+        @user = User.find_by_id(params[:id])
+        redirect_to(root_url) unless @user && current_user?(@user)
     end
 
     # Confirms an admin user.
